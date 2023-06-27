@@ -1,20 +1,32 @@
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import * as SystemUI from 'expo-system-ui';
+import { useColorScheme } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { useTheme } from '@react-navigation/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import AppLightTheme from 'src/styles/AppLightTheme';
+import AppDarkTheme from 'src/styles/AppDarkTheme';
+import { RootStackParamList } from './types';
+
+import { HomeScreen } from 'src/screens';
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
+  const colorScheme = useColorScheme();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app! Initialized</Text>
-      <StatusBar style='auto' />
-    </View>
+    <NavigationContainer
+      theme={colorScheme === 'light' ? AppLightTheme : AppDarkTheme}
+    >
+      <SafeAreaProvider>
+        <StatusBar style='auto' />
+        <Stack.Navigator>
+          <Stack.Screen name='Home' component={HomeScreen} />
+        </Stack.Navigator>
+      </SafeAreaProvider>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
