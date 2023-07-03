@@ -1,6 +1,6 @@
-import 'react-native-gesture-handler';
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { useColorScheme } from 'react-native';
+import { View, useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { useTheme } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -21,12 +21,14 @@ export default function App() {
     <NavigationContainer
       theme={colorScheme === 'light' ? AppLightTheme : AppDarkTheme}
     >
-      <SafeAreaProvider>
-        <StatusBar style='auto' />
-        <Stack.Navigator>
-          <Stack.Screen name='Home' component={HomeScreen} />
-        </Stack.Navigator>
-      </SafeAreaProvider>
+      <View style={{ height: '100%' }}>
+        <SafeAreaProvider>
+          <StatusBar style='auto' />
+          <Stack.Navigator data-testId='home-navigator'>
+            <Stack.Screen name='Home' component={HomeScreen} />
+          </Stack.Navigator>
+        </SafeAreaProvider>
+      </View>
     </NavigationContainer>
   );
 }
