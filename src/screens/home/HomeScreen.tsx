@@ -7,7 +7,7 @@ import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 
-import Layout from 'src/components/Layout';
+import { Layout, WelcomeMessage } from 'src/components';
 
 import { RootStackParamList } from '../../../types';
 
@@ -18,10 +18,7 @@ export default function HomeScreen(props: HomeScreenProps) {
 
   return (
     <Layout>
-      <Text style={{ fontSize: 16, color: colors.text }}>Home Screen</Text>
-      {/* <Text style={{ fontSize: 16, color: colors.text }}>
-        Open up App.tsx to start working on your app! Initialized
-      </Text> */}
+      <WelcomeMessage />
       <Button
         title='Go to Details'
         onPress={() => props.navigation.push('Details')}

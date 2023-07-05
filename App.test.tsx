@@ -20,10 +20,4 @@ describe('<App />', () => {
     const tree = create(<App />).toJSON() as ReactTestRendererJSON;
     expect(tree?.children?.length).toBe(1);
   });
-
-  it('render Home screen ', async () => {
-    render(<App />);
-
-    expect(await screen.getByText(/Home Screen/i));
-  });
 });
