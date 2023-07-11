@@ -8,10 +8,10 @@ const AddGoalSection = () => {
   return (
     <View className='flex flex-row justify-between mb-6'>
       <View>
-        <Text className='items-center justify-center text-white text-xl'>
+        <Text className='items-center justify-center dark:text-white text-xl'>
           34 Goals
         </Text>
-        <Text className='items-center justify-center text-white'>
+        <Text className='items-center justify-center dark:text-white'>
           {"Ambitious person, aren't you "}
         </Text>
       </View>

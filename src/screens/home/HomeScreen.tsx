@@ -5,7 +5,7 @@ import { useTheme } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { Layout, WelcomeMessage, GoalsCounter } from 'src/components';
-import { AddGoalSection } from './components';
+import { AddGoalSection, OngoingGoalsSection } from './components';
 
 import { RootStackParamList } from '../../../types';
 
@@ -17,6 +17,7 @@ export default function HomeScreen(props: HomeScreenProps) {
       <WelcomeMessage />
       <AddGoalSection />
       <GoalsCounter />
+      <OngoingGoalsSection />
       {/* <Button
         title='Go to Details'
         onPress={() => props.navigation.push('Details')}
