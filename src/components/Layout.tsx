@@ -7,8 +7,8 @@ type LayoutTypes = {
 
 const Layout: React.FC<LayoutTypes> = ({ children }) => {
   return (
-    <SafeAreaView className='flex-1 dark:bg-black-100'>
-      <View className='flex-1 px-2'>{children}</View>
+    <SafeAreaView className='container dark:bg-black-100'>
+      <View className='px-2.5'>{children}</View>
     </SafeAreaView>
   );
 };
