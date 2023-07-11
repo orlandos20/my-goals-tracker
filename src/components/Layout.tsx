@@ -1,30 +1,16 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { useTheme } from '@react-navigation/native';
+import { SafeAreaView, View } from 'react-native';
 
 type LayoutTypes = {
   children?: React.ReactElement | React.ReactElement[];
 };
 
 const Layout: React.FC<LayoutTypes> = ({ children }) => {
-  const { colors } = useTheme();
-
   return (
-    <SafeAreaView
-      style={[styles.container, { backgroundColor: colors.background }]}
-    >
-      {children}
+    <SafeAreaView className='flex-1 dark:bg-black-100'>
+      <View className='flex-1 px-2'>{children}</View>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default Layout;

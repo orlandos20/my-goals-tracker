@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useTheme } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NativeWindStyleSheet } from 'nativewind';
 
 import AppLightTheme from 'src/styles/AppLightTheme';
 import AppDarkTheme from 'src/styles/AppDarkTheme';
@@ -32,3 +33,7 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+NativeWindStyleSheet.setOutput({
+  default: 'native',
+});
