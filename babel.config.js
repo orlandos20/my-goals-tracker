@@ -15,6 +15,12 @@ module.exports = function (api) {
       ],
       '@babel/plugin-transform-react-jsx',
       ['nativewind/babel'],
+      [
+        'react-native-reanimated/plugin',
+        {
+          relativeSourceLocation: true,
+        },
+      ],
     ],
   };
 };
