@@ -12,7 +12,7 @@ import AppLightTheme from 'src/styles/AppLightTheme';
 import AppDarkTheme from 'src/styles/AppDarkTheme';
 import { RootStackParamList } from './types';
 
-import { HomeScreen, AddGoals } from 'src/screens';
+import { HomeScreen, AddGoals, GoalsDetails } from 'src/features';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -41,12 +41,19 @@ export default function App() {
                     }}
                   />
                   <Stack.Screen
-                    name='addGoals'
+                    name='AddGoals'
                     component={AddGoals}
                     options={{
                       presentation: 'containedTransparentModal',
                       headerShown: Platform.OS === 'ios',
                       animation: 'fade_from_bottom',
+                    }}
+                  />
+                  <Stack.Screen
+                    name='GoalsDetails'
+                    component={GoalsDetails}
+                    options={{
+                      animation: 'slide_from_right',
                     }}
                   />
                 </Stack.Navigator>

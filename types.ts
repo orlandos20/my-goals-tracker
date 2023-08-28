@@ -1,4 +1,5 @@
 export type RootStackParamList = {
   Home: undefined;
-  addGoals: undefined;
+  AddGoals: undefined;
+  GoalsDetails: undefined;
 };

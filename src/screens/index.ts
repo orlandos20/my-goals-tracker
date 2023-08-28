@@ -1,2 +1,2 @@
-export * from './home';
-export * from './addGoals';
+export * from '../features/home';
+export * from '../features/addGoals';

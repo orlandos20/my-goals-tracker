@@ -20,7 +20,7 @@ export default function HomeScreen(props: HomeScreenProps) {
       <OngoingGoalsSection />
       <Button
         title='Go to Details'
-        onPress={() => props.navigation.push('addGoals')}
+        onPress={() => props.navigation.push('GoalsDetails')}
       />
     </Layout>
   );
