@@ -7,7 +7,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Layout, WelcomeMessage, GoalsCounter } from 'src/components';
 import { AddGoalSection, OngoingGoalsSection } from './components';
 
-import { RootStackParamList } from '../../../types';
+import { RootStackParamList } from '../../types';
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 

@@ -1,4 +1,8 @@
 import React, { createContext } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+import { GoalsType, RootStackParamList } from '../types';
 
 import useHandleBottomSheet from 'src/hooks/useHandleBottomSheet';
 export const AppContext = createContext<any>({
@@ -17,6 +21,9 @@ export type AppContextTypes = {
 };
 
 export const AppContextProvider: React.FC<AppContextTypes> = ({ children }) => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   const {
     sheetIsOpen,
     sheetRef,
@@ -29,6 +36,7 @@ export const AppContextProvider: React.FC<AppContextTypes> = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        navigation,
         bottomSheetControls: {
           sheetIsOpen,
           sheetRef,
@@ -43,3 +51,7 @@ export const AppContextProvider: React.FC<AppContextTypes> = ({ children }) => {
     </AppContext.Provider>
   );
 };
+
+export const GoalsContext = createContext({
+  goals: [] as GoalsType[],
+});
