@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { View, useColorScheme, Platform } from 'react-native';
@@ -10,9 +10,9 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 
 import AppLightTheme from 'src/styles/AppLightTheme';
 import AppDarkTheme from 'src/styles/AppDarkTheme';
-import { RootStackParamList, GoalsType } from './src/types';
+import { RootStackParamList } from './src/types';
 
-import { HomeScreen, AddGoals, GoalsDetails } from 'src/modules';
+import { HomeScreen, AddGoals, GoalsDetails } from 'src/screens';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

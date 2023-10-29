@@ -4,13 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import useHandleBottomSheet from 'src/hooks/useHandleBottomSheet';
 
-import {
-  SafeAreaView,
-  ScrollView,
-  View,
-  Text,
-  useColorScheme,
-} from 'react-native';
+import { View, Text, useColorScheme } from 'react-native';
 import BottomSheet, {
   BottomSheetModal,
   BottomSheetView,
@@ -25,15 +19,7 @@ const AddGoals = () => {
   const { goBack } = useNavigation();
   const styles = useStyles();
 
-  const {
-    sheetIsOpen,
-    sheetRef,
-    handlePresentModalPress,
-    snapPoints,
-    handleSnapPress,
-    handleClose,
-    handleSheetChanges,
-  } = useHandleBottomSheet(addGoalsRef);
+  const { snapPoints, handleSheetChanges } = useHandleBottomSheet(addGoalsRef);
 
   return (
     <View style={{ flex: 1, paddingTop: insets.top }}>
@@ -59,7 +45,7 @@ const AddGoals = () => {
         }}
       >
         <BottomSheetView>
-          <View className='bg-zinc-800 h-full w-full'>
+          <View className='bg-zinc-800 h-full w-full px-4'>
             <Text className='dark:text-white'>Hello</Text>
           </View>
         </BottomSheetView>
