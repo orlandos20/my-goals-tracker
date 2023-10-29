@@ -12,7 +12,7 @@ import AppLightTheme from 'src/styles/AppLightTheme';
 import AppDarkTheme from 'src/styles/AppDarkTheme';
 import { RootStackParamList, GoalsType } from './src/types';
 
-import { HomeScreen, AddGoals, GoalsDetails } from 'src/features';
+import { HomeScreen, AddGoals, GoalsDetails } from 'src/modules';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

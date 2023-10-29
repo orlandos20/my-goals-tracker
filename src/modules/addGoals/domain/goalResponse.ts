@@ -1,6 +1,6 @@
 export interface GoalResponse {
-  userId: string;
-  id: string;
+  userId: number;
+  id: number;
   author: string;
   title: string;
   description: string;
