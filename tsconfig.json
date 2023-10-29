@@ -20,7 +20,8 @@
       "jest",
       "node",
       "@testing-library/react-native",
-      "@testing-library/jest-native"
+      "@testing-library/jest-native",
+      "nativewind/types"
     ]
   }
 }
