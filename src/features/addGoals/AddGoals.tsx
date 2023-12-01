@@ -61,13 +61,8 @@ const AddGoals = () => {
         }}
       >
         <BottomSheetView>
-<<<<<<< Updated upstream:src/features/addGoals/AddGoals.tsx
-          <View className='bg-zinc-800 h-full w-full'>
-            <Text className='dark:text-white'>Hello</Text>
-=======
           <View className='dark:bg-[#161618] light:bg-zinc-800 h-full w-full p-4'>
             <GoalForm />
->>>>>>> Stashed changes:src/screens/addGoals/AddGoals.tsx
           </View>
         </BottomSheetView>
       </BottomSheet>
