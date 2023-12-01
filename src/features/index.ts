@@ -1,3 +1,3 @@
 export * from './home';
-export * from './addGoals';
-export * from './goals-details';
+export * from './goals/addGoals';
+export * from './goals/goals-details';

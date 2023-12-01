@@ -10,6 +10,9 @@ const OngoingGoalsSection = () => {
       <GoalCard />
       <GoalCard />
       <GoalCard />
+      <GoalCard />
+      <GoalCard />
+      <GoalCard />
     </View>
   );
 };

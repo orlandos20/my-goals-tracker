@@ -12,7 +12,7 @@ const AddGoalSection = () => {
           34 Goals
         </Text>
         <Text className='items-center justify-center dark:text-white'>
-          {"Ambitious person, aren't you "}
+          {"Ambitious person, aren't you? "}
         </Text>
       </View>
       <View>

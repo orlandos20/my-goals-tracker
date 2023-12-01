@@ -5,7 +5,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { Layout } from 'src/components';
 
-import { RootStackParamList } from '../../../types';
+import { RootStackParamList } from '../../../../types';
 
 type GoalsDetailsScreenProps = NativeStackScreenProps<
   RootStackParamList,
