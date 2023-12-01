@@ -21,7 +21,7 @@ const Layout: React.FC<LayoutTypes> = ({ children }) => {
     bottomSheetControls;
 
   return (
-    <SafeAreaView className='container flex-1 dark:bg-black-100 light:bg-neutral-100'>
+    <SafeAreaView className='container flex-1 dark:bg-[#161618] light:bg-neutral-100'>
       <ScrollView className={`px-4 opacity-${sheetIsOpen ? '50' : '100'}`}>
         {children}
       </ScrollView>

@@ -9,7 +9,7 @@ const useHandleBottomSheet = (
     : useRef<BottomSheet>(null);
   const [sheetIsOpen, setSheetIsOpen] = useState<boolean>(false);
 
-  const snapPoints = useMemo(() => ['40%', '60%', '90%'], []);
+  const snapPoints = useMemo(() => ['70%', '90%'], []);
 
   const handleSnapPress = useCallback(
     (index: number) => {
