@@ -1,9 +1,17 @@
 import React from 'react';
-import { Text, View, StyleSheet, TextInput, Button, Alert } from 'react-native';
+import { Text, View, TextInput } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-import Constants from 'expo-constants';
+
+import { createGoal } from 'src/modules/goals/application/create/create';
+import { createApiGoalRepository } from 'src/modules/goals/infra/apiGoalRepository';
 
 import { AddGoalButton } from 'src/components';
+
+import { useNavigation } from '@react-navigation/native';
+
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+import { RootStackParamList } from '../../../types';
 
 type GoalFormInputs = {
   title: string;
@@ -18,11 +26,8 @@ type FormProps = {
 
 const GoalForm: React.FC<FormProps> = ({ formValuesPropsForDetails }) => {
   const {
-    register,
-    setValue,
     handleSubmit,
     control,
-    reset,
     formState: { errors },
   } = useForm<GoalFormInputs>({
     defaultValues: formValuesPropsForDetails
@@ -35,8 +40,20 @@ const GoalForm: React.FC<FormProps> = ({ formValuesPropsForDetails }) => {
         },
   });
 
-  const onSubmit = (data: any) => {
+  const { navigate } =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
+  const onSubmit = async (data: GoalFormInputs) => {
     console.log(data);
+    const goalRepository = createApiGoalRepository();
+
+    const savedGoal = await createGoal(goalRepository)(data);
+
+    console.log('savedGoal --> ', savedGoal);
+
+    if (savedGoal) {
+      navigate('Home');
+    }
   };
 
   console.log('errors', errors);
@@ -142,7 +159,7 @@ const GoalForm: React.FC<FormProps> = ({ formValuesPropsForDetails }) => {
       {/* END Reset Button */}
 
       <View>
-        <AddGoalButton />
+        <AddGoalButton onPress={handleSubmit(onSubmit)} />
       </View>
     </View>
   );
