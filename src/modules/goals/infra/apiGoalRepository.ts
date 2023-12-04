@@ -18,6 +18,8 @@ export function createApiGoalRepository(): GoalRepository {
 
   const create = async (goal: GoalDataCreate): Promise<GoalResponse> => {
     // SecureStore.deleteItemAsync('goals');
+    //TODO: Based on user profile (premium or not), implement the different logic for each case here.
+    //example, if user is premium import and implemente a database connection to save the goals in a DB, else, use localStorage.
     const goalsSavedInLs = await getAll();
     const newState = [];
 
@@ -28,8 +30,6 @@ export function createApiGoalRepository(): GoalRepository {
     } else {
       newState.push(goal);
     }
-
-    console.log('goalsSavedInLs --> ', newState);
 
     //TODO: receive userRepository and build a GoalDTO in order to build the GoalResponse;
     await SecureStore.setItemAsync('goals', JSON.stringify(newState));
@@ -47,6 +47,7 @@ export function createApiGoalRepository(): GoalRepository {
 
   return {
     get,
+    getAll,
     create,
     getByUser,
     deleteGoal,

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Text, View, TextInput } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 
+import { GoalContext } from 'src/contexts';
+
 import { createGoal } from 'src/modules/goals/application/create/create';
-import { createApiGoalRepository } from 'src/modules/goals/infra/apiGoalRepository';
 
 import { AddGoalButton } from 'src/components';
 
@@ -40,23 +41,17 @@ const GoalForm: React.FC<FormProps> = ({ formValuesPropsForDetails }) => {
         },
   });
 
+  const { goalRepository } = useContext(GoalContext);
+
   const { navigate } =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const onSubmit = async (data: GoalFormInputs) => {
-    console.log(data);
-    const goalRepository = createApiGoalRepository();
-
     const savedGoal = await createGoal(goalRepository)(data);
-
-    console.log('savedGoal --> ', savedGoal);
-
     if (savedGoal) {
       navigate('Home');
     }
   };
-
-  console.log('errors', errors);
 
   return (
     <View>
