@@ -27,15 +27,7 @@ const AddGoals = () => {
   const { goBack } = useNavigation();
   const styles = useStyles();
 
-  const {
-    sheetIsOpen,
-    sheetRef,
-    handlePresentModalPress,
-    snapPoints,
-    handleSnapPress,
-    handleClose,
-    handleSheetChanges,
-  } = useHandleBottomSheet(addGoalsRef);
+  const { snapPoints, handleSheetChanges } = useHandleBottomSheet(addGoalsRef);
 
   return (
     <View style={{ flex: 1, paddingTop: insets.top }}>

@@ -7,3 +7,7 @@ export interface GoalResponse {
   deadline: Date;
   reminder: Date;
 }
+
+export interface GoalErrorResponse {
+  message: 'An occur saving the Goal!';
+}

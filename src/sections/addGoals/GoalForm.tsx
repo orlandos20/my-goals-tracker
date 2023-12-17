@@ -1,15 +1,27 @@
-import React from 'react';
-import { Text, View, StyleSheet, TextInput, Button, Alert } from 'react-native';
+import React, { useContext } from 'react';
+import uuid from 'react-native-uuid';
+
+import { Text, View, TextInput } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-import Constants from 'expo-constants';
+
+import { GoalContext } from 'src/contexts';
 
 import { AddGoalButton } from 'src/components';
 
+import { useNavigation } from '@react-navigation/native';
+
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+import { RootStackParamList } from '../../../types';
+
 type GoalFormInputs = {
+  id: string | number[];
   title: string;
   description: string;
   reminder: Date;
   deadline: Date;
+  isComplete: false;
+  inProgress: false;
 };
 
 type FormProps = {
@@ -17,29 +29,32 @@ type FormProps = {
 };
 
 const GoalForm: React.FC<FormProps> = ({ formValuesPropsForDetails }) => {
-  const {
-    register,
-    setValue,
-    handleSubmit,
-    control,
-    reset,
-    formState: { errors },
-  } = useForm<GoalFormInputs>({
+  const { handleSubmit, control } = useForm<GoalFormInputs>({
     defaultValues: formValuesPropsForDetails
       ? formValuesPropsForDetails
       : {
+          id: uuid.v4(),
           title: '',
           description: '',
           reminder: new Date(),
           deadline: new Date(),
+          isComplete: false,
+          inProgress: false,
         },
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-  };
+  const { goalCreator } = useContext(GoalContext);
 
-  console.log('errors', errors);
+  const { navigate } =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
+  const onSubmit = async (data: GoalFormInputs) => {
+    //@ts-ignore
+    const savedGoal = await goalCreator(data);
+    if (savedGoal) {
+      navigate('Home');
+    }
+  };
 
   return (
     <View>
@@ -142,7 +157,7 @@ const GoalForm: React.FC<FormProps> = ({ formValuesPropsForDetails }) => {
       {/* END Reset Button */}
 
       <View>
-        <AddGoalButton />
+        <AddGoalButton onPress={handleSubmit(onSubmit)} />
       </View>
     </View>
   );

@@ -1,5 +1,7 @@
 import React, { createContext } from 'react';
 
+import { useGoals } from 'src/hooks/goals';
+
 import useHandleBottomSheet from 'src/hooks/useHandleBottomSheet';
 export const AppContext = createContext<any>({
   bottomSheetControls: {
@@ -43,3 +45,7 @@ export const AppContextProvider: React.FC<AppContextTypes> = ({ children }) => {
     </AppContext.Provider>
   );
 };
+
+export const GoalContext = createContext<ReturnType<typeof useGoals>>(
+  {} as ReturnType<typeof useGoals>
+);
