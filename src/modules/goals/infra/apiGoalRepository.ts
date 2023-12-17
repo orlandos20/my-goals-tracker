@@ -8,7 +8,15 @@ import { GoalResponse, GoalErrorResponse } from '../domain/goalResponse';
 export function createApiGoalRepository(): GoalRepository {
   //TODO: Remove this ignore
   //@ts-ignore
-  const get = async (goalId: Goal['id']): Promise<Goal> => {};
+  const get = async (goalId: Goal['id']): Promise<Goal | undefined> => {
+    const allGoals = await SecureStore.getItemAsync('goals');
+    const parsedGoals: Goal[] | null = allGoals && JSON.parse(allGoals);
+    const goal = parsedGoals
+      ? parsedGoals?.find((goal) => goal.id === goalId)
+      : undefined;
+
+    return goal;
+  };
 
   const getAll = async (): Promise<Goal[] | null> => {
     const result = await SecureStore.getItemAsync('goals');
@@ -17,7 +25,7 @@ export function createApiGoalRepository(): GoalRepository {
   };
 
   const create = async (goal: GoalDataCreate): Promise<GoalResponse> => {
-    // SecureStore.deleteItemAsync('goals');
+    SecureStore.deleteItemAsync('goals');
     //TODO: Based on user profile (premium or not), implement the different logic for each case here.
     //example, if user is premium import and implemente a database connection to save the goals in a DB, else, use localStorage.
     const goalsSavedInLs = await getAll();

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
+import uuid from 'react-native-uuid';
+
 import { Text, View, TextInput } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 
 import { GoalContext } from 'src/contexts';
-
-import { createGoal } from 'src/modules/goals/application/create/create';
 
 import { AddGoalButton } from 'src/components';
 
@@ -15,10 +15,13 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../types';
 
 type GoalFormInputs = {
+  id: string | number[];
   title: string;
   description: string;
   reminder: Date;
   deadline: Date;
+  isComplete: false;
+  inProgress: false;
 };
 
 type FormProps = {
@@ -26,18 +29,17 @@ type FormProps = {
 };
 
 const GoalForm: React.FC<FormProps> = ({ formValuesPropsForDetails }) => {
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm<GoalFormInputs>({
+  const { handleSubmit, control } = useForm<GoalFormInputs>({
     defaultValues: formValuesPropsForDetails
       ? formValuesPropsForDetails
       : {
+          id: uuid.v4(),
           title: '',
           description: '',
           reminder: new Date(),
           deadline: new Date(),
+          isComplete: false,
+          inProgress: false,
         },
   });
 

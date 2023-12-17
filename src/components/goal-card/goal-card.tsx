@@ -11,12 +11,14 @@ import { RootStackParamList } from '../../../types';
 
 type GoalCardProps = Partial<Goal>;
 
-const GoalCard: React.FC<GoalCardProps> = ({ title, description }) => {
+const GoalCard: React.FC<GoalCardProps> = ({ id, title, description }) => {
   const { navigate } =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+    useNavigation<
+      NativeStackNavigationProp<RootStackParamList, 'GoalsDetails'>
+    >();
 
   return (
-    <TouchableOpacity onPress={() => navigate('GoalsDetails')}>
+    <TouchableOpacity onPress={() => navigate('GoalsDetails', { id })}>
       <View className='flex flex-row space-x-4 p-6 mb-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-[#212124] dark:border-zinc-800'>
         <View>
           <Text className='dark:text-white text-xl tracking-wider'>Icon </Text>

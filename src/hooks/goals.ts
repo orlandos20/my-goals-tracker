@@ -25,6 +25,18 @@ export const useGoals = () => {
     }
   };
 
+  const getGoalById = async (
+    id: string | number[] | undefined
+  ): Promise<Goal | undefined> => {
+    if (id) {
+      const goal = goals?.find((goal) => goal.id === id);
+
+      return goal;
+    }
+
+    return undefined;
+  };
+
   useEffect(() => {
     if (!goals?.length) {
       retrieveGoals();
@@ -35,6 +47,7 @@ export const useGoals = () => {
     goals,
     retrieveGoals,
     goalCreator,
+    getGoalById,
     goalRepository,
   };
 };
