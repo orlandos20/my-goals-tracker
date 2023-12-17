@@ -23,8 +23,6 @@ export function createApiGoalRepository(): GoalRepository {
     const goalsSavedInLs = await getAll();
     const newState = [];
 
-    console.log('goalsSavedInLs parsed --> ', goalsSavedInLs);
-
     if (goalsSavedInLs && goalsSavedInLs?.length) {
       newState.push(...goalsSavedInLs, goal);
     } else {

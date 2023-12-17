@@ -41,13 +41,14 @@ const GoalForm: React.FC<FormProps> = ({ formValuesPropsForDetails }) => {
         },
   });
 
-  const { goalRepository } = useContext(GoalContext);
+  const { goalCreator } = useContext(GoalContext);
 
   const { navigate } =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const onSubmit = async (data: GoalFormInputs) => {
-    const savedGoal = await createGoal(goalRepository)(data);
+    //@ts-ignore
+    const savedGoal = await goalCreator(data);
     if (savedGoal) {
       navigate('Home');
     }

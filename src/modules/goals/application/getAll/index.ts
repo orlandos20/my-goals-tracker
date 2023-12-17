@@ -5,11 +5,13 @@ import { GoalResponse } from '../../domain/goalResponse';
 export async function getAll(
   goalRepository: GoalRepository
 ): Promise<Goal[] | null> {
-  const goals = await goalRepository.getAll();
+  try {
+    const goals = await goalRepository.getAll();
 
-  if (!goals) {
-    throw new Error(`Error retrieving all goals in app layer`);
+    return goals;
+  } catch (error) {
+    throw new Error(
+      `Error retrieving all goals in app layer, js error: ${error}`
+    );
   }
-
-  return goals;
 }
